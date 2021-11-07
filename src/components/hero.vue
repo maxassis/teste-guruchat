@@ -26,7 +26,8 @@ export default {
 .hero {
   width: 100%;
   height: 786px;
-  background-image: url("../assets/imgs/BG.png");
+  //background-image: url("../assets/imgs/BG.png");
+  background: linear-gradient(174.48deg, #fd749b -12.41%, #281ac8 88.56%);
   background-repeat: no-repeat;
   background-size: 100vw;
 

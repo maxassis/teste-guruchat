@@ -1,17 +1,13 @@
 <template>
   <div class="card">
-    <img src="../assets/imgs/teste.jpg" alt="image cover" />
+    <img :src="image" alt="image cover" />
     <div class="card__description-wrapper">
       <div class="card__wrapper-texts">
-        <p>CONHEÇA AS NOVAS CRIPTOPMOEDAS QUE CHEGARAM.</p>
-        <span>19/10/2021 | BUSINESS</span>
-        <p>
-          Sabemos o quanto importante é ter uma ampla listagem de ativos
-          disponíveis para negociação, porém, nossa prioridade é sempre a
-          segurança.
-        </p>
+        <p>{{ title }}</p>
+        <span> {{ date }} | {{ category }} </span>
+        <p>{{ subtitle }}</p>
       </div>
-      <a class="card__button"> DESCUBRA </a>
+      <a class="card__button" @click="toResponse(data)"> DESCUBRA </a>
     </div>
   </div>
 </template>
@@ -19,6 +15,21 @@
 <script>
 export default {
   name: "card",
+  props: {
+    title: String,
+    subtitle: String,
+    date: String,
+    category: String,
+    image: String,
+    data: Object,
+  },
+  methods: {
+    methods: {
+      selectNew(news) {
+        this.store.dispatch("getSingleNew", news);
+      },
+    },
+  },
 };
 </script>
 
@@ -29,6 +40,7 @@ export default {
   height: 873px;
   margin: 0 auto;
   padding: 0px 15px;
+  margin-top: 80px;
 
   img {
     width: 100%;
