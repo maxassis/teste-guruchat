@@ -1,30 +1,48 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="container">
+    <Header />
+    <Hero />
+    <!-- <Footer /> -->
+    <Card />
   </div>
-  <router-view />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { defineComponent } from "vue";
+import axios from "axios";
+import Header from "@/components/header.vue";
+import Hero from "@/components/hero.vue";
+//import Footer from "@/components/footer.vue";
+import Card from "@/components/card.vue";
 
-#nav {
-  padding: 30px;
+export default defineComponent({
+  components: {
+    Header,
+    Hero,
+    Card,
+  },
+  data() {
+    return {
+      users: [],
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      const { data } = await axios.get(
+        "https://api.jsonbin.io/b/617086bd9548541c29c61eef/2"
+      );
+      console.log(data.news);
+      this.users = data.news;
+    },
+  },
+});
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+<style>
+.container {
+  width: 100%;
 }
 </style>
