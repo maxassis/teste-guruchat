@@ -7,7 +7,6 @@ export default createStore({
   mutations: {
     SET_NEW(state, payload) {
       state.news = payload;
-      console.log(state.news);
     },
   },
   actions: {
@@ -16,5 +15,9 @@ export default createStore({
     },
   },
 
-  modules: {},
+  getters: {
+    singleNews(state) {
+      return state.news;
+    },
+  },
 });
