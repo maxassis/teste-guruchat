@@ -3,6 +3,8 @@
     <img src="../assets/imgs/logo-white.png" alt="logo white" />
     <span>© 2021 Desenvolvido por Max Assis </span>
   </div>
+  <router-link to="/read">Teste</router-link>
+  <router-view></router-view>
 </template>
 
 <script>
