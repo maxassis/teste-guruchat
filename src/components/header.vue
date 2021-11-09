@@ -3,11 +3,14 @@
     <div class="container">
       <div class="header">
         <div class="header__wrapper-title">
-          <img src="../assets/imgs/Logo.png" alt="logo" />
-
+          <router-link to="/">
+            <img src="../assets/imgs/Logo.png" alt="logo" />
+          </router-link>
           <div>
             <ul class="header__list">
-              <li>Home</li>
+              <router-link to="/">
+                <li>Home</li>
+              </router-link>
               <li>Post</li>
             </ul>
           </div>
