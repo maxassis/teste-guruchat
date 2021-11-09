@@ -74,7 +74,7 @@ export default defineComponent({
   height: 873px;
   margin: 0 auto;
   padding: 0px 15px;
-  margin-top: 80px;
+  margin-bottom: 60px;
 
   img {
     width: 100%;

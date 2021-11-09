@@ -1,14 +1,12 @@
 <template>
   <Header />
   <div class="reader">
-    <div class="reader__image-wrapper">
-      <!-- <img
-        class="reader__image"
-        src="../assets/imgs/bit.jpg"
-        alt="image"
-        style="position: relative"
-      /> -->
-      <p>SMARTCONTRACTS! O QUE SÃO E COMO FUNCIONAM. CONHEÇA!</p>
+    <div
+      class="reader__image-wrapper"
+      :style="{ backgroundImage: `url(${getNews.url_image})` }"
+    >
+      <p>{{ getNews.title }}</p>
+      <p>{{ getNews.date }} | {{ getNews.category }}</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
@@ -24,16 +22,7 @@
   </div>
   <div class="reader__long-text">
     <p>
-      Mussum Ipsum, cacilds vidis litro abertis. Paisis, filhis, espiritis
-      santis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
-      Delegadis gente finis, bibendum egestas augue arcu ut est. Diuretics
-      paradis num copo é motivis de denguis. Posuere libero varius. Nullam a
-      nisl ut ante blandit hendrerit. Aenean sit amet nisi. Quem num gosta di
-      mim que vai caçá sua turmis! Quem num gosta di mé, boa gentis num é. Viva
-      Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra
-      quem é amistosis quis leo. Detraxit consequat et quo num tendi nada. Suco
-      de cevadiss deixa as pessoas mais interessantis. Não sou faixa preta
-      cumpadi, sou preto inteiris, inteiris.
+      {{ getNews.long_text }}
     </p>
   </div>
   <Footer />
@@ -46,13 +35,16 @@ import Footer from "@/components/footer.vue";
 export default {
   name: "Read",
   components: { Header, Footer },
+  computed: {
+    getNews() {
+      return this.$store.state.news;
+    },
+  },
 };
 </script>
-
 <style lang="scss" scoped>
 .reader {
   &__image-wrapper {
-    background-image: url("../assets/imgs/bit.jpg");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -60,7 +52,7 @@ export default {
     height: 792px;
     overflow: hidden;
 
-    p {
+    p:first-child {
       font-family: Poppins;
       font-weight: bold;
       font-size: 32px;
@@ -73,6 +65,15 @@ export default {
         font-size: 25px;
         line-height: 36px;
       }
+    }
+
+    p:nth-child(2) {
+      font-size: 10px;
+      line-height: 20px;
+      color: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      margin-top: 17px;
     }
 
     @media (max-width: 600px) {
