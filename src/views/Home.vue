@@ -10,8 +10,14 @@
           <span> {{ user.date }} | {{ user.category }} </span>
           <p>{{ user.short_text }}</p>
         </div>
-        <router-link to="read">
-          <a class="card__button" @click="selectNew(user)"> DESCUBRA </a>
+        <router-link
+          to="read"
+          style="display: inline-block; margin:0 auto; width 157px;"
+          class="card_button"
+        >
+          <button class="card__button" @click="selectNew(user)">
+            DESCUBRA
+          </button>
         </router-link>
       </div>
     </div>
@@ -154,6 +160,7 @@ export default defineComponent({
 
 @media (max-width: 991px) {
   .card {
+    height: auto;
     img {
     }
 
@@ -232,5 +239,10 @@ export default defineComponent({
     &__button {
     }
   }
+}
+
+#router-link {
+  display: inline-block;
+  width: 100px;
 }
 </style>

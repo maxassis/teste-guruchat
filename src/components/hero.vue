@@ -91,6 +91,10 @@ export default {
       height: 535px;
     }
   }
+
+  @media (max-width: 991px) {
+    margin-bottom: 65px;
+  }
 }
 
 .waves {
