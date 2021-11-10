@@ -7,12 +7,15 @@
       <div class="card__description-wrapper">
         <div class="card__wrapper-texts">
           <p>{{ user.title }}</p>
-          <span> {{ user.date }} | {{ user.category }} </span>
+          <span>
+            {{ new Date(user.date).toLocaleString("pt-BR") }} |
+            {{ user.category }}
+          </span>
           <p>{{ user.short_text }}</p>
         </div>
         <router-link
           to="read"
-          style="display: inline-block; margin:0 auto; width 157px;"
+          style="display: inline-block; margin: 0 auto; width: 157px"
           class="card_button"
         >
           <button class="card__button" @click="selectNew(user)">
@@ -140,6 +143,7 @@ export default defineComponent({
       color: #333333;
       text-align: center;
       margin-top: 15px;
+      text-transform: uppercase;
     }
   }
 
