@@ -2,7 +2,7 @@
   <div class="container">
     <Header />
     <Hero />
-    <div class="card" v-for="user in users" :key="user.id">
+    <div class="card" v-for="user in displayedPosts" :key="user.id">
       <img :src="user.url_image" alt="image cover" />
       <div class="card__description-wrapper">
         <div class="card__wrapper-texts">
@@ -24,6 +24,43 @@
         </router-link>
       </div>
     </div>
+
+    <nav>
+      <ul class="pagination">
+        <li class="page-item">
+          <button
+            type="button"
+            class="page-link"
+            v-if="page != 1"
+            @click="page--"
+          >
+            Previous
+          </button>
+        </li>
+        <li class="page-item">
+          <button
+            type="button"
+            class="page-link"
+            v-for="pageNumber in pages.slice(page - 1, page + 5)"
+            @click="page = pageNumber"
+            :key="pageNumber.index"
+          >
+            {{ pageNumber }}
+          </button>
+        </li>
+        <li class="page-item">
+          <button
+            type="button"
+            @click="page++"
+            v-if="page < pages.length"
+            class="page-link"
+          >
+            Next
+          </button>
+        </li>
+      </ul>
+    </nav>
+
     <Footer />
   </div>
 </template>
@@ -34,19 +71,20 @@ import axios from "axios";
 import Header from "@/components/header.vue";
 import Hero from "@/components/hero.vue";
 import Footer from "@/components/footer.vue";
-// import Card from "@/components/card.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
     Header,
     Hero,
-    // Card,
     Footer,
   },
   data() {
     return {
       users: [],
+      page: 1,
+      perPage: 3,
+      pages: [],
     };
   },
   created() {
@@ -57,16 +95,42 @@ export default defineComponent({
       const { data } = await axios.get(
         "https://api.jsonbin.io/b/617086bd9548541c29c61eef/2"
       );
-      // console.log(data.news);
       this.users = data.news;
     },
     selectNew(news) {
       this.$store.dispatch("getSingleNew", news);
     },
+    setPages() {
+      let numberOfPages = Math.ceil(this.users.length / this.perPage);
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
+    },
+    paginate(users) {
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = page * perPage - perPage;
+      let to = page * perPage;
+      return users.slice(from, to);
+    },
   },
   computed: {
     singleNews() {
-      return this.$store.state.singleNews;
+      return this.store.state.singleNews;
+    },
+    displayedPosts() {
+      return this.paginate(this.users);
+    },
+  },
+  watch: {
+    users() {
+      this.setPages();
+      console.log(this.pages);
+    },
+  },
+  filters: {
+    trimWords(value) {
+      return value.split(" ").splice(0, 20).join(" ") + "...";
     },
   },
 });
