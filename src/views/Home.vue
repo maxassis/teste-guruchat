@@ -2,6 +2,7 @@
   <div class="container">
     <Header />
     <Hero />
+
     <div class="card" v-for="user in displayedPosts" :key="user.id">
       <img :src="user.url_image" alt="image cover" />
       <div class="card__description-wrapper">
@@ -25,41 +26,43 @@
       </div>
     </div>
 
-    <nav>
-      <ul class="pagination">
-        <li class="page-item">
-          <button
-            type="button"
-            class="page-link"
-            v-if="page != 1"
-            @click="page--"
-          >
-            Previous
-          </button>
-        </li>
-        <li class="page-item">
-          <button
-            type="button"
-            class="page-link"
-            v-for="pageNumber in pages.slice(page - 1, page + 5)"
-            @click="page = pageNumber"
-            :key="pageNumber.index"
-          >
-            {{ pageNumber }}
-          </button>
-        </li>
-        <li class="page-item">
-          <button
-            type="button"
-            @click="page++"
-            v-if="page < pages.length"
-            class="page-link"
-          >
-            Next
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <div class="pagination">
+      <nav class="pagination__wrapper">
+        <ul class="pagination__list">
+          <li class="pagination__item">
+            <button
+              type="button"
+              class="pagination__button"
+              v-if="page != 1"
+              @click="page--"
+            >
+              Previous
+            </button>
+          </li>
+          <li class="pagination__item">
+            <button
+              type="button"
+              class="pagination__button-pageNumber"
+              v-for="pageNumber in pages.slice(page - 1, page + 5)"
+              @click="page = pageNumber"
+              :key="pageNumber.index"
+            >
+              0{{ pageNumber }}
+            </button>
+          </li>
+          <li class="paination__item">
+            <button
+              type="button"
+              @click="page++"
+              v-if="page < pages.length"
+              class="pagination__button"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
     <Footer />
   </div>
@@ -140,7 +143,7 @@ export default defineComponent({
 .container {
   width: 100%;
 }
-
+// CARD
 .card {
   width: 100%;
   max-width: 1140px;
@@ -226,6 +229,55 @@ export default defineComponent({
   }
 }
 
+// PAGINATION
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 55px;
+
+  &__wrapper {
+    margin-top: 55px;
+    margin-bottom: 70px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__button-pageNumber {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 100px;
+    padding: 19px 20px;
+
+    &:focus-within {
+      background: linear-gradient(178.18deg, #fd749b -13.56%, #281ac8 158.3%);
+      color: #ffffff;
+    }
+  }
+
+  &__button {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 100px;
+    padding: 19px 32px;
+
+    &:focus-within {
+      background: linear-gradient(178.18deg, #fd749b -13.56%, #281ac8 158.3%);
+      color: #ffffff;
+    }
+  }
+}
+
 @media (max-width: 991px) {
   .card {
     height: auto;
@@ -307,10 +359,5 @@ export default defineComponent({
     &__button {
     }
   }
-}
-
-#router-link {
-  display: inline-block;
-  width: 100px;
 }
 </style>

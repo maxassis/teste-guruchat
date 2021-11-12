@@ -110,6 +110,10 @@ export default {
 }
 
 @media (max-width: 600px) {
+  .header-external-container {
+    height: 100px;
+  }
+
   .header {
     &__wrapper-title {
       width: 100%;
@@ -122,6 +126,10 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .header-external-container {
+    height: 90px;
+  }
+
   .header {
     &__list {
       gap: 20px;

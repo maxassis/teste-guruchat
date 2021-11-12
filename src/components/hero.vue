@@ -147,6 +147,7 @@ export default {
 
       h1 {
         font-size: 25px;
+        max-width: none;
       }
 
       p {
