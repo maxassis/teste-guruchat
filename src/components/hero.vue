@@ -144,10 +144,17 @@ export default {
     &__title-wrapper {
       width: 100%;
       margin-top: 20px;
+      height: 213px;
+
+      span {
+        display: block;
+        text-align: center;
+      }
 
       h1 {
         font-size: 25px;
         max-width: none;
+        text-align: center;
       }
 
       p {

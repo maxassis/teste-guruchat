@@ -63,12 +63,26 @@ export default {
     align-items: center;
 
     li {
+      position: relative;
       list-style: none;
       cursor: pointer;
       font-family: Poppins;
       font-weight: bold;
       font-size: 14px;
       color: #333333;
+
+      &:hover {
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: -4px;
+          left: 0px;
+          width: 25px;
+          height: 3px;
+          border-radius: 32px;
+          background-color: #fd749b;
+        }
+      }
     }
   }
 

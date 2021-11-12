@@ -359,5 +359,12 @@ export default defineComponent({
     &__button {
     }
   }
+
+  .pagination {
+    &__wrapper {
+      margin-top: 0;
+      margin-bottom: 70px;
+    }
+  }
 }
 </style>
