@@ -1,24 +1,45 @@
-# guruchat
+# Teste ChatGuru
 
-## Project setup
+Teste para a vaga de desenvolvedor front-end na empresa GuruChat, todos os requisitos do teste se encontram em [https://zeroheight.com/9e30bbddb/p/09c50d-desafio-front-guru](https://zeroheight.com/9e30bbddb/p/09c50d-desafio-front-guru)
+
+## Tecnologias principais
+
+HTML, CSS, JavaScript e VueJS
+
+## Bibliotecas
+
+Axios
+
+Sass
+
+## Instruções
+
+Clone o projeto utilizando o comando:
+
 ```
-pnpm install
+https://github.com/maxassis/teste-guruchat.git
 ```
 
-### Compiles and hot-reloads for development
+em seguida acesse a pasta do projeto e faça a instalação:
+
 ```
-pnpm run serve
+npm install
 ```
 
-### Compiles and minifies for production
+dentro da pasta do projeto execute o comando para rodar a aplicação
+
 ```
-pnpm run build
+npm run serve
 ```
 
-### Lints and fixes files
-```
-pnpm run lint
-```
+## Deploy
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Telas
+
+![](https://github.com/maxassis/teste-guruchat/blob/master/src/assets/imgs/print2.png?raw=true)
+
+
+
+![](https://github.com/maxassis/teste-guruchat/blob/master/src/assets/imgs/guruchat.png?raw=true)
