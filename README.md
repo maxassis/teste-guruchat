@@ -2,15 +2,21 @@
 
 Teste para a vaga de desenvolvedor front-end na empresa GuruChat, todos os requisitos do teste se encontram em [https://zeroheight.com/9e30bbddb/p/09c50d-desafio-front-guru](https://zeroheight.com/9e30bbddb/p/09c50d-desafio-front-guru)
 
+
+
 ## Tecnologias principais
 
 HTML, CSS, JavaScript e VueJS
+
+
 
 ## Bibliotecas
 
 Axios
 
 Sass
+
+
 
 ## Instruções
 
@@ -32,7 +38,11 @@ dentro da pasta do projeto execute o comando para rodar a aplicação
 npm run serve
 ```
 
+
+
 ## Deploy
+
+[https://max-chatguru.vercel.app/](https://max-chatguru.vercel.app/)
 
 
 
